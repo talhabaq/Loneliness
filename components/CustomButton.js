@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
-const CustomButton = ({ onPress, title, style, textStyle, isIconShow = false }) => {
+const CustomButton = ({ onPress, title, style, textStyle, isIconShow = false ,iconSource}) => {
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -11,11 +11,11 @@ const CustomButton = ({ onPress, title, style, textStyle, isIconShow = false }) 
             {
                 isIconShow ?
                     <Image
-                        source={require("../assets/images/GoogleIcon.png")}
+                        source={iconSource}
                         style={styles.googleIcon} />
                     : null
             }
-            <Text style={[styles.logInBtn, textStyle]}>{title}</Text>
+            <Text style={[styles.logInBtn,textStyle]}>{title}</Text>
         </TouchableOpacity>
     )
 }

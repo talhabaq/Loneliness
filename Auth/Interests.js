@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import CustomButton from '../components/CustomButton';
 
-const LookingFor = ({ navigation }) => {
+const Interests = ({ navigation }) => {
     const [male, setMale] = useState(false);
     const [female, setFemale] = useState(false);
     const [other, setOther] = useState(false);
@@ -31,35 +31,36 @@ const LookingFor = ({ navigation }) => {
 
     return (
         <View style={styles.main}>
-            <TouchableOpacity onPress={() => navigation.navigate("Gender")}>
+            <TouchableOpacity onPress={() => navigation.navigate("LookingFor")}>
                 <Image
                     source={require('../assets/images/Back.png')}
                     style={styles.backArrow}
                 />
             </TouchableOpacity>
             <Image
-                source={require('../assets/images/LoaderAcc7.png')}
+                source={require('../assets/images/LoaderAcc8.png')}
                 style={styles.loader}
             />
             <View>
-                <Text style={styles.mainText}>Looking For</Text>
-                <Text style={styles.desc}>Let's start by knowing a bit more that what you are looking for</Text>
+                <Text style={styles.mainText}>Select Your Interests</Text>
+                <Text style={styles.desc}>Select your interest and unlock your perfect matches.</Text>
             </View>
             <View style={{ flex: 1, top: hp(15) }}>
                 <CustomButton
-                    title={'Male'}
+                    title={'👩‍❤️‍💋‍👩 Date'}
                     textStyle={styles.text}
                     onPress={handleMale}
                     style={[male ? styles.buttonActive : styles.buttonDisabled]}
+                    isIconShow={true}
                 />
                 <CustomButton
-                    title={'Female'}
+                    title={'🍴 Lunch'}
                     textStyle={styles.femaletext}
                     style={[female ? styles.buttonActive : styles.buttonDisabled]}
                     onPress={handleFemale}
                 />
                 <CustomButton
-                    title={'Both'}
+                    title={'🐟 Dinner'}
                     textStyle={styles.text}
                     style={[other ? styles.buttonActive : styles.buttonDisabled]}
                     onPress={handleOther}
@@ -71,9 +72,9 @@ const LookingFor = ({ navigation }) => {
                 style={isGenderSelected ? styles.cnbuttonActive : styles.cnbuttonDisabled} // Change button color based on selection
                 onPress={() => {
                     if (isGenderSelected) {
-                        navigation.navigate('Interests'); 
+                        navigation.navigate('Location'); 
                     } else {
-                        Alert.alert('Please select a gender option before continuing.');
+                        Alert.alert('Please choose At least 1 interest');
                     }
                 }}
             />
@@ -144,4 +145,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LookingFor;
+export default Interests;

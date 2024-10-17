@@ -47,16 +47,7 @@ const PhoneNumber = ({ navigation }) => {
                         custoMStyle={styles.phoneInput}
                     />
                 </View>
-                {/* <PhoneInput
-                    ref={phoneInput}
-                    defaultCode={defaultCountryCode}
-                    layout="first"
-                    placeholder="Phone Number"
-                    containerStyle={styles.phoneInputContainer}
-                    textContainerStyle={styles.textContainer}
-                    textInputStyle={styles.textInput}
-                    onChangeFormattedText={handlePhoneNumberChange}
-                /> */}
+
             </View>
             <View style={{}}>
                 <Image
@@ -99,12 +90,12 @@ const styles = StyleSheet.create({
         fontSize: 23,
         alignSelf: 'center',
         top: hp(10),
-        color:'#FFFFFF'
+        color: '#FFFFFF'
     },
     desc: {
         top: hp(10),
         alignSelf: 'center',
-        color:'#FFFFFF'
+        color: '#FFFFFF'
     },
     PrivacyText: {
         height: hp(10),

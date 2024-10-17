@@ -1,10 +1,10 @@
-import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import CheckBox from '@react-native-community/checkbox';
+import CheckBox from 'react-native-check-box';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/CustomInput'
-import { ScrollView } from 'react-native-gesture-handler'
+
 const { width, height } = Dimensions.get('window')
 const SignUp = ({ navigation }) => {
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
@@ -13,6 +13,7 @@ const SignUp = ({ navigation }) => {
     const [confirmpassword, setConfirmPassword] = useState('')
     const [isPasswordVisible, setPasswordVisible] = useState(false); // State to toggle password visibility
 
+    const [isChecked, setIsChecked] = useState(false);
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!isPasswordVisible); // Toggle the password visibility
@@ -23,14 +24,8 @@ const SignUp = ({ navigation }) => {
         setConfirmPasswordVisible(!isPasswordVisible); // Toggle the password visibility
     }
 
-    const handleCheck = (newValue) => {
-        setToggleCheckBox(newValue);
-        if (newValue) {
-          console.log('Checkbox is checked!');
-        } else {
-          console.log('Checkbox is unchecked!');
-        }
-      };
+
+
     return (
         <View style={styles.main}>
             <TouchableOpacity
@@ -79,15 +74,18 @@ const SignUp = ({ navigation }) => {
                         iconStyle={styles.passwordIcon}
                         onIconPress={toggleConfirmPasswordVisibility}
                     />
-                    <View style={styles.checkboxContainer}>
-                       <CheckBox
-                            disabled={false}
-                            value={toggleCheckBox}
-                            onValueChange={handleCheck}
-                            tintColors={{ true: '#FCE220', false: '#C3C3C3' }}
-                        />
-                        <Text style={styles.label}>Remember Me</Text>
-                    </View>
+
+                    <CheckBox
+                        isChecked={isChecked}
+                        onClick={() => setIsChecked(!isChecked)}
+                        checkBoxColor="#FCE220"
+                        uncheckedCheckBoxColor="#C3C3C3"
+                        style={styles.checkbox}
+                        rightText={'Remember Me'}
+                        rightTextStyle={styles.rightText}
+                    />
+
+
                     <View style={styles.Bar} />
                     <View>
                         <Text style={styles.simpleText}>Already have an account? </Text>
@@ -99,7 +97,7 @@ const SignUp = ({ navigation }) => {
                         <CustomButton
                             title='Sign Up'
                             onPress={() => navigation.navigate("Name")}
-                            style={{ marginTop:35 }}
+                            style={{ marginTop: 35 }}
                         />
                     </View>
                 </View>
@@ -132,10 +130,6 @@ const styles = StyleSheet.create({
         left: wp(6.5),
         bottom: hp(11)
     },
-    checkboxContainer: {
-        flexDirection: 'row',
-        left:wp(5.3)
-    },
     Bar: {
         height: 2,
         width: 340,
@@ -167,9 +161,15 @@ const styles = StyleSheet.create({
         left: wp(80),
         position: 'absolute'
     },
-    label:{
-        top:"18%",
-        color:'#FFFFFF'
-    }
+    label: {
+        top: "18%",
+        color: '#FFFFFF'
+    },
+    rightText: {
+        color: '#FFFFFF',
+    },
+    checkbox: {
+        left: wp(6),
+    },
 })
 export default SignUp

@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import CustomButton from '../components/CustomButton';
@@ -27,7 +27,7 @@ const Gender = ({ navigation }) => {
     };
 
     // Determine if any gender option is selected
-    const isGenderSelected = male || female || other;
+    const isGenderSelected = male || female || other
 
     return (
         <View style={styles.main}>
@@ -71,7 +71,7 @@ const Gender = ({ navigation }) => {
                 style={isGenderSelected ? styles.cnbuttonActive : styles.cnbuttonDisabled} // Change button color based on selection
                 onPress={() => {
                     if (isGenderSelected) {
-                        navigation.navigate('Name'); // Change to your next screen
+                        navigation.navigate('LookingFor');
                     } else {
                         Alert.alert('Please select a gender option before continuing.');
                     }

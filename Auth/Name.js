@@ -42,8 +42,8 @@ const Name = ({ navigation }) => {
             <CustomButton
                 title='Continue'
                 style={[name ? styles.buttonActive : styles.buttonDisabled]}
-                disabled={!name} // Disable button if input is empty
-                onPress={handleContinue} // Use the handleContinue function
+                disabled={!name} 
+                onPress={handleContinue} 
             />
         </View>
     );

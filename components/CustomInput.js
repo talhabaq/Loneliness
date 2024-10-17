@@ -13,13 +13,16 @@ const CustomInput = ({
     iconStyle,
     custoMStyle,
     multiline,
+    customContainer,
+    maxLength,
     ...props
 }) => {
     const [isFocused, setIsFocused] = useState(false);
     return (
-        <View style={styles.Container}>
+        <View style={[customContainer, styles.Container]}>
             <Text style={styles.inputName}>{inputName}</Text>
             <TextInput
+                maxLength={maxLength}
                 multiline={multiline}
                 value={value}
                 onChangeText={onChangeText}
@@ -62,7 +65,7 @@ const CustomInput = ({
 const styles = StyleSheet.create({
     textInput: {
         height: 45,
-        paddingHorizontal: 40,
+        paddingHorizontal: 40,// changing cursor position
         backgroundColor: '#434343',
         borderColor: '#C3C3C3',
         borderWidth: 1,

@@ -53,7 +53,10 @@ const PathScreen = ({ navigation }) => {
           onPress={() => setSelected('buddy')}
         >
           <Image source={require('../assets/images/Buddy.png')} style={styles.image} />
-          <Text style={styles.optionText}>Buddy</Text>
+          <Text  style={[
+            styles.optionText,
+            selected === 'buddy' && styles.selectedText,
+          ]}>Buddy</Text>
         </TouchableOpacity>
         {/* Buddy Finder */}
         <TouchableOpacity
@@ -64,14 +67,17 @@ const PathScreen = ({ navigation }) => {
           onPress={() => setSelected('buddyFinder')}
         >
           <Image source={require('../assets/images/BuddyFinder.png')} style={styles.image} />
-          <Text style={styles.optionText}>Buddy Finder</Text>
+          <Text style={[
+            styles.optionText,
+            selected === 'buddyFinder' && styles.selectedText,
+          ]}>Buddy Finder</Text>
         </TouchableOpacity>
       </View>
       {/* Continue Button */}
-          <CustomButton 
-          title='Continue'
+      <CustomButton
+        title='Continue'
         disabled={!selected} // disable if no option is selected
-        onPress={() => { navigation.navigate('HomeTabs') }}
+        onPress={() => { navigation.navigate('Login') }}
         style={[
           styles.continueButton,
           selected && styles.continueButtonActive,
@@ -80,7 +86,7 @@ const PathScreen = ({ navigation }) => {
           styles.btnText,
           selected && styles.btnTextActive,
         ]}
-          />
+      />
     </View>
   )
 }
@@ -133,7 +139,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#434343',
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: 'grey', // default border color
+    borderColor: '#C3C3C3', // default border color
     alignSelf: 'center',
     left: wp(13),
     top: hp(51),
@@ -146,7 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#434343',
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: 'grey', // default border color
+    borderColor: '#C3C3C3', // default border color
     alignSelf: 'center',
     left: wp(53),
     top: hp(51),
@@ -156,7 +162,9 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   selectedOption: {
-    borderColor: '#FFD700', // highlight border when selected
+    borderColor: '#FCE220',
+    backgroundColor:'#111111'
+    
   },
   image: {
     width: wp(15),
@@ -165,19 +173,23 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: 'white',
+    fontWeight:"bold"
   },
   continueButton: {
     backgroundColor: '#E7E7E7',
-    top:hp(75)
+    top: hp(75)
   },
   continueButtonActive: {
     backgroundColor: '#FFD700', // active button color when option is selected
   },
-  btnText:{
-    color:"#6C6C6C"
+  btnText: {
+    color: "#6C6C6C"
   },
-  btnTextActive:{
-    color:"#191919"
+  btnTextActive: {
+    color: "#191919"
+  },
+  selectedText:{
+    color:'#FCE220'
   }
 })
 export default PathScreen

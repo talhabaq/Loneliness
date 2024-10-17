@@ -6,6 +6,7 @@ const SignIn = ({ navigation }) => {
   const handlePress = () => {
     navigation.navigate('Path')
   }
+  const source = require("../assets/images/GoogleIcon.png")
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#111111' }}>
       <View>
@@ -35,7 +36,7 @@ const SignIn = ({ navigation }) => {
       <CustomButton
         onPress={handlePress}
         title='Log In'
-        style={{top:hp(77)}}
+        style={{ top: hp(77) }}
       />
       <CustomButton
         title='Continue With Google'
@@ -43,9 +44,10 @@ const SignIn = ({ navigation }) => {
         style={styles.google}
         textStyle={styles.googletext}
         isIconShow={true}
+        iconSource={source}
       />
       <View style={styles.signUpView}>
-        <Text style={{color:'#FFFFFF'}}>Don't have an account? </Text>
+        <Text style={{ color: '#FFFFFF' }}>Don't have an account? </Text>
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('SignUp')
@@ -91,8 +93,8 @@ const styles = StyleSheet.create({
   google: {
     backgroundColor: '#111111',
     borderColor: 'rgba(252, 226, 32, 1)',
-    borderWidth: 2, 
-    top:hp(79)
+    borderWidth: 2,
+    top: hp(79)
   },
   googletext: {
     color: '#FCE220'
